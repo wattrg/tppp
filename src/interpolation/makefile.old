@@ -1,0 +1,7 @@
+CC = g++
+OBJ = linear_interpolator.o
+SRC_FILES = linear_interpolator.cpp
+all: $(OBJ)
+	$(CC) -c $(SRC_FILES)
+clean:
+	rm $(OBJ)

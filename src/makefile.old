@@ -1,0 +1,8 @@
+CC: = g++
+OBJ_DIR := ../build
+fast: directories
+	$(MAKE) -C interpolation
+	$(MAKE) -C collision_integrals
+
+directories:
+	@mkdir -p $OBJ_DIR

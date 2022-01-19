@@ -1,0 +1,14 @@
+CFLAGS := -I
+OBJ_DIR := ../../build
+_OBJ := tabular_collision_integral.o
+OBJ = $(patsubt %,$(OBJ_DIR)/%,$(_OBJ))
+$(info $$OBJ is [$(OBJ)])
+
+$(OBJ_DIR)/%.o: %.cpp %.h
+	$(CC) -o -c $@ $< $(CFLAGS)
+
+make: $(OBJ)
+	$(CC) -c tabular_collision_integral.cpp
+
+clean:
+	rm $(OBJ)
