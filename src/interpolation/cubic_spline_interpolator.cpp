@@ -71,9 +71,7 @@ void CubicSplineInterpolator::compute_y_dash_dash(){
   }
 }
 
-double CubicSplineInterpolator::operator() (double x_target){
-  check_bounds(x_target);
-  int i = find_interp_loc(x_target);
+double CubicSplineInterpolator::eval_interp (double x_target, int i){
   double dx_plus = x_values[i+1] - x_target;
   double dx_minus = x_target - x_values[i];
   double delta_xi = x_values[i+1] - x_values[i];

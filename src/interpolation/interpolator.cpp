@@ -26,3 +26,9 @@ int Interpolator::find_interp_loc(double target_x){
   // we failed to find the location where our interpolation should be
   return -1;
 }
+
+double Interpolator::eval(double x_target) {
+  check_bounds(x_target);
+  int i = find_interp_loc(x_target);
+  return eval_interp(x_target, i);
+}

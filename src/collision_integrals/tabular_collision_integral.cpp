@@ -28,7 +28,7 @@ ColIntTable::~ColIntTable() {}
 
 
 double ColIntTable::eval(double temp) {
-  return (*interp)(temp);
+  return interp->eval(temp);
 }
 
 std::vector<double> ColIntTable::get_temps() {

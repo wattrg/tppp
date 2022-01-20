@@ -15,6 +15,9 @@ public:
 
   interpolators type = cubic_spline;
 
+protected:
+  double eval_interp(double x_target, int i) override;
+
 private:
   // the seconds derivates of the spline at the data points
   std::vector<double> y_dash_dash;

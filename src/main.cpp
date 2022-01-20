@@ -9,7 +9,6 @@ int main(int argc, char *argv[]) {
   std::cout << "Welcome to tppp!" << std::endl;
   std::vector<double> x = {1.0, 2.0, 4.0, 5.0, 10.0};
   std::vector<double> y = {1.0, 4.0, 16.0, 25.0, 100.0};
-  //std::vector<double> y = {1.0, 4.0, 4.0, 5.0, 10.0};
   col_int_species species = std::make_tuple("N2", "N2");
   col_int_order order = std::make_tuple(1, 1);
   ColIntTable ci = ColIntTable(species, order, x, y, cubic_spline);

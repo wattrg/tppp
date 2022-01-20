@@ -9,11 +9,11 @@ public:
   LinearInterpolator(std::vector<double> & x, std::vector<double> & y);
   ~LinearInterpolator(){};
 
-  // evaluate the interpolation
-  double operator()(double x_target);
-
   // type of interpolator
   interpolators type = linear;
+
+protected:
+  double eval_interp(double x_target, int i) override;
 
 };
 
