@@ -5,6 +5,7 @@
 #include <exception>
 #include <iostream>
 #include <vector>
+#include <string>
 #include "interpolate_errors.h"
 
 enum interpolators {
@@ -25,6 +26,9 @@ public:
 
   // The type of the interpolation
   interpolators type;
+
+  // The type of the interpolator as a string
+  const std::string get_type_string();
 
 protected:
   // The values to interpolate

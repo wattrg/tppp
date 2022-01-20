@@ -10,7 +10,7 @@ public:
   ~LinearInterpolator(){};
 
   // type of interpolator
-  interpolators type = linear;
+  const interpolators type = linear;
 
 protected:
   double eval_interp(double x_target, int i) override;

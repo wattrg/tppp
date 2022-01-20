@@ -13,7 +13,7 @@ public:
   // evaluate the interpolation
   double operator() (double x_target);
 
-  interpolators type = cubic_spline;
+  const interpolators type = cubic_spline;
 
 protected:
   double eval_interp(double x_target, int i) override;

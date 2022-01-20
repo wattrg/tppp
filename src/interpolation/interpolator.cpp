@@ -32,3 +32,17 @@ double Interpolator::eval(double x_target) {
   int i = find_interp_loc(x_target);
   return eval_interp(x_target, i);
 }
+
+const std::string Interpolator::get_type_string() {
+  switch (type) {
+    case linear:
+      return "linear";
+      break;
+    case cubic_spline:
+      return "cubic_spline";
+      break;
+    default:
+      return "NA";
+      break;
+  }
+}
