@@ -15,7 +15,7 @@ DEPEXT      := d
 OBJEXT      := o
 
 #Flags, Libraries and Includes
-CFLAGS      := -Wall -g
+CFLAGS      := -Wall -g -O3
 LIB         := -lm
 INC         := -I$(INCDIR) -I/usr/local/include
 INCDEP      := -I$(INCDIR)
@@ -54,6 +54,7 @@ cleaner: clean
 
 #Link
 $(TARGET): $(OBJECTS)
+	mkdir -p bin
 	$(CC) -o $(TARGETDIR)/$(TARGET) $^ $(LIB)
 
 #Compile
