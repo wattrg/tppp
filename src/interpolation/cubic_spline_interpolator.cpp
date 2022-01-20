@@ -1,12 +1,11 @@
 #include "cubic_spline_interpolator.h"
 
 CubicSplineInterpolator::CubicSplineInterpolator(std::vector<double> & x, std::vector<double> & y)
-: Interpolator(x, y)
+: Interpolator(x, y), y_dash_dash(std::vector<double>(n_pts, 0.0))
 {
   if (n_pts < 4) {
       throw InterpolateInsufficientPoints();
   }
-  y_dash_dash = std::vector<double>(n_pts, 0.0);
   compute_y_dash_dash();
 }
 
@@ -19,8 +18,9 @@ void print_vector(std::vector<double> vec){
 }
 
 void CubicSplineInterpolator::compute_y_dash_dash(){
-  // This funcion computes the required information for interpolating
-  // points using a cubic spline interpolation scheme.
+  // This funcion computes the second derivative at the knots, which allows the
+  // interpolation to be computed
+
   // Note since the matrix equation we're solving is symmetrical and tridiagonal
   // we can represent the matrix with two vectos (one for the diagonal and
   // another for the off diagonals)
