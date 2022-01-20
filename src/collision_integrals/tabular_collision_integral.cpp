@@ -2,13 +2,22 @@
 #include "tabular_collision_integral.h"
 #include <iostream>
 
-ColIntTable::ColIntTable(std::vector<double> temps, std::vector<double> ci,
+
+ColIntTable::ColIntTable(col_int_species species, col_int_order order,
+                         std::vector<double> temps, std::vector<double> ci,
                          interpolators interpolator)
-  : temps(temps), ci(ci)
+  : CollisionIntegral(species, order), temps(temps), ci(ci)
 {
+  set_interpolator(interpolator);
+}
+
+void ColIntTable::set_interpolator(interpolators interpolator){
   switch (interpolator) {
     case linear:
-      interp = new LinearInterpolator(temps, ci);
+      this->interp = new LinearInterpolator(temps, ci);
+      break;
+    case cubic_spline:
+      this->interp = new CubicSplineInterpolator(temps, ci);
       break;
     default:
       throw new std::exception();
@@ -16,6 +25,7 @@ ColIntTable::ColIntTable(std::vector<double> temps, std::vector<double> ci,
 }
 
 ColIntTable::~ColIntTable() {}
+
 
 double ColIntTable::eval(double temp) {
   return (*interp)(temp);
@@ -27,4 +37,13 @@ std::vector<double> ColIntTable::get_temps() {
 
 std::vector<double> ColIntTable::get_cis() {
   return ci;
+}
+
+interpolators ColIntTable::get_interp_type() {
+  return interp->type;
+}
+
+void ColIntTable::set_interp_type(interpolators interpolator) {
+  free(interp);
+  set_interpolator(interpolator);
 }
