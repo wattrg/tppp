@@ -24,7 +24,9 @@ void ColIntTable::set_interpolator(interpolators interpolator){
   }
 }
 
-ColIntTable::~ColIntTable() {}
+ColIntTable::~ColIntTable() {
+  free(interp);
+}
 
 
 double ColIntTable::eval(double temp) {
